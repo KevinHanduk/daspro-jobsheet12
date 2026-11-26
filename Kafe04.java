@@ -1,12 +1,16 @@
 import java.util.Scanner;
-
 public class Kafe04 {
-        public static void Menu(int jamKunjung, String namaPelanggan, boolean isMember) {
+
+        public static int hitungTotalHarga04(int pilihanMenu, int banyakItem) {
+            int[] hargaItems = {15000, 20000, 22000, 12000, 10000, 18000};
+
+            int hargaTotal = hargaItems[pilihanMenu - 1] * banyakItem;
+            return hargaTotal;
+        }
+
+        public static void Menu(String namaPelanggan, boolean isMember) {
         System.out.println("Selamat datang, " + namaPelanggan + "!");
         
-        if (jamKunjung >= 14 && jamKunjung <= 16) {
-            System.out.println("Happy Hour! Diskon 20% untuk semua minuman");
-        }
         if (isMember) {
             System.out.println("Anda adalah member, dapatkan diskon 10% untuk setiap pembelian!");
         }
@@ -22,13 +26,16 @@ public class Kafe04 {
     }    
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.print("Nama Pelanggan: ");
-        String namaPelanggan = sc.nextLine();
-        System.out.print("status Member (true/false): ");
-        boolean isMember = sc.nextBoolean();
-        System.out.print("Jam Kunjungan : ");
-        int jamKunjung = sc.nextInt();
-        Menu(jamKunjung, namaPelanggan, isMember);
+        Menu("Andi", true);
+
+        System.out.print("\nMasukkan nomor menu yang ingin anda pesan: ");
+        int pilihanMenu = sc.nextInt();
+        System.out.print("Masukkan jumlah item yang ingin anda pesan: ");
+        int banyakItem = sc.nextInt();
+
+        int totalBayar = hitungTotalHarga04(pilihanMenu, banyakItem);
+
+        System.out.println("Total harga untuk pesanan anda: Rp " + totalBayar);
 
         sc.close();
     }
