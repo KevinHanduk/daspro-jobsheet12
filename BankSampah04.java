@@ -11,7 +11,7 @@ public class BankSampah04 {
             System.out.print("Masukkan berat setoran nasabah ke-" + (i + 1) + " (kg): ");
             setoran[i] = sc.nextDouble();
         }
-
+        sc.close();
         return setoran;
     }
 
